@@ -3,7 +3,13 @@ import mongoose, { Schema, Document } from "mongoose";
 export interface ILesson extends Document {
   name: string;
   description: string;
-  level: "primary" | "highschool" | "university";
+  level:
+    | "primary"
+    | "highschool"
+    | "university"
+    | "beginner"
+    | "intermediate"
+    | "advanced";
   category: string;
   icon?: string;
   color?: string;
@@ -16,7 +22,14 @@ const lessonSchema = new Schema<ILesson>({
   description: { type: String, required: true },
   level: {
     type: String,
-    enum: ["primary", "highschool", "university"],
+    enum: [
+      "primary",
+      "highschool",
+      "university",
+      "beginner",
+      "intermediate",
+      "advanced",
+    ],
     required: true,
   },
   category: { type: String, required: true },

@@ -3,7 +3,13 @@ import { IUser } from "@/models/User";
 export interface UpdateProfileRequest {
   name?: string;
   profile?: {
-    level?: "beginner" | "intermediate" | "advanced";
+    level?:
+      | "primary"
+      | "highschool"
+      | "university"
+      | "beginner"
+      | "intermediate"
+      | "advanced";
     preferences?: {
       studyTimePerDay?: number;
       preferredHours?: string[];

@@ -1,0 +1,201 @@
+{
+  "common": {
+    "appName": "Testora",
+    "appDescription": "AI-powered study platform",
+    "email": "Email",
+    "password": "Password",
+    "name": "Full Name",
+    "confirmPassword": "Confirm Password",
+    "loading": "Loading",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "search": "Search...",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "subtitle": "Sign in to your account",
+      "emailPlaceholder": "example@email.com",
+      "passwordPlaceholder": "Enter your password",
+      "forgotPassword": "Forgot password?",
+      "loginButton": "Signing in",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Sign up",
+      "success": "Successfully logged in",
+      "error": "Login failed"
+    },
+    "register": {
+      "title": "Register",
+      "subtitle": "Create your account",
+      "namePlaceholder": "Enter your full name",
+      "emailPlaceholder": "example@email.com",
+      "passwordPlaceholder": "Enter your password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "registerButton": "Creating account",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Sign in",
+      "success": "Registration successful. Please verify your email",
+      "error": "Registration failed"
+    },
+    "logout": {
+      "success": "Successfully logged out"
+    },
+    "verification": {
+      "title": "Email Verification",
+      "subtitle": "Verify your email address",
+      "verifying": "Verifying...",
+      "verifyingDescription": "We're verifying your email address, please wait.",
+      "checkEmail": "Check Your Email",
+      "checkEmailDescription": "We've sent a verification link to your email address.",
+      "successDescription": "Your email has been successfully verified. You can now use the application.",
+      "errorDescription": "The verification link is invalid or has expired. You can request a new verification email.",
+      "resendButton": "Resend Email",
+      "resending": "Sending...",
+      "sent": "Verification email sent",
+      "success": "Email successfully verified",
+      "error": "Failed to send verification email",
+      "invalid": "Invalid verification code",
+      "resent": "Verification email resent",
+      "resendError": "Failed to resend verification email"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "subtitle": "We'll send a password reset link to your email",
+      "emailPlaceholder": "example@email.com",
+      "sendButton": "Send Reset Link",
+      "sendingButton": "Sending...",
+      "backToLogin": "Back to login",
+      "sent": "Password reset email sent",
+      "error": "Failed to send password reset email"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "subtitle": "Set your new password",
+      "newPassword": "New Password",
+      "passwordPlaceholder": "Enter your new password",
+      "confirmPasswordPlaceholder": "Confirm your new password",
+      "resetButton": "Reset Password",
+      "resettingButton": "Resetting...",
+      "invalidToken": "Invalid Link",
+      "invalidTokenDesc": "The password reset link is invalid or has expired.",
+      "success": "Password successfully reset",
+      "error": "Failed to reset password"
+    },
+    "changePassword": {
+      "title": "Change Password",
+      "subtitle": "Replace your current password with a new one",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "currentPasswordPlaceholder": "Enter your current password",
+      "newPasswordPlaceholder": "Enter your new password",
+      "confirmPasswordPlaceholder": "Confirm your new password",
+      "changeButton": "Change Password",
+      "changingButton": "Changing...",
+      "success": "Password successfully changed",
+      "error": "Failed to change password"
+    },
+    "validation": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 6 characters",
+      "passwordMaxLength": "Password is too long",
+      "passwordStrength": "Password must contain at least one lowercase letter, one uppercase letter, and one number",
+      "passwordsNotMatch": "Passwords don't match",
+      "nameRequired": "Name is required",
+      "nameMinLength": "Name must be at least 2 characters",
+      "nameMaxLength": "Name is too long",
+      "currentPasswordRequired": "Current password is required"
+    },
+    "oauth": {
+      "messages": {
+        "loginSuccess": "Successfully logged in"
+      },
+      "errors": {
+        "loginFailed": "OAuth login failed"
+      }
+    }
+  },
+  "user": {
+    "messages": {
+      "profileUpdated": "Profile successfully updated",
+      "accountDeleted": "Account successfully deleted"
+    },
+    "errors": {
+      "profileFetch": "Failed to fetch profile",
+      "profileUpdate": "Failed to update profile",
+      "accountDelete": "Failed to delete account"
+    }
+  },
+  "study": {
+    "messages": {
+      "sessionStarted": "Study session started",
+      "correctAnswer": "Correct answer!",
+      "incorrectAnswer": "Incorrect answer",
+      "sessionCompleted": "Study session completed"
+    },
+    "errors": {
+      "lessonsFetch": "Failed to fetch lessons",
+      "topicsFetch": "Failed to fetch topics",
+      "sessionFetch": "Failed to fetch session",
+      "questionFetch": "Failed to fetch question",
+      "progressFetch": "Failed to fetch progress",
+      "historyFetch": "Failed to fetch history",
+      "sessionStart": "Failed to start session",
+      "submitAnswer": "Failed to submit answer",
+      "sessionEnd": "Failed to end session"
+    }
+  },
+  "studyPlan": {
+    "messages": {
+      "planCreated": "Study plan created",
+      "planUpdated": "Study plan updated",
+      "planDeleted": "Study plan deleted",
+      "aiPlanGenerated": "AI study plan generated"
+    },
+    "errors": {
+      "plansFetch": "Failed to fetch study plans",
+      "planFetch": "Failed to fetch study plan",
+      "progressFetch": "Failed to fetch progress",
+      "planCreate": "Failed to create study plan",
+      "planUpdate": "Failed to update study plan",
+      "planDelete": "Failed to delete study plan",
+      "aiPlanGenerate": "Failed to generate AI study plan"
+    }
+  },
+  "admin": {
+    "messages": {
+      "lessonCreated": "Lesson created",
+      "lessonUpdated": "Lesson updated",
+      "lessonDeleted": "Lesson deleted",
+      "topicCreated": "Topic created",
+      "topicUpdated": "Topic updated",
+      "topicDeleted": "Topic deleted",
+      "questionCreated": "Question created",
+      "questionUpdated": "Question updated",
+      "questionDeleted": "Question deleted",
+      "questionsGenerated": "Questions generated with AI",
+      "contentGenerated": "Content generated with AI"
+    },
+    "errors": {
+      "lessonsFetch": "Failed to fetch lessons",
+      "topicsFetch": "Failed to fetch topics",
+      "questionsFetch": "Failed to fetch questions",
+      "statsFetch": "Failed to fetch stats",
+      "lessonCreate": "Failed to create lesson",
+      "lessonUpdate": "Failed to update lesson",
+      "lessonDelete": "Failed to delete lesson",
+      "topicCreate": "Failed to create topic",
+      "topicUpdate": "Failed to update topic",
+      "topicDelete": "Failed to delete topic",
+      "questionCreate": "Failed to create question",
+      "questionUpdate": "Failed to update question",
+      "questionDelete": "Failed to delete question",
+      "questionsGenerate": "Failed to generate questions with AI",
+      "contentGenerate": "Failed to generate content with AI"
+    }
+  }
+}

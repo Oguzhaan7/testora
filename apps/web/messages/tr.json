@@ -1,0 +1,313 @@
+{
+  "common": {
+    "appName": "Testora",
+    "appDescription": "AI destekli çalışma platformu",
+    "email": "Email",
+    "password": "Şifre",
+    "name": "Ad Soyad",
+    "confirmPassword": "Şifre Tekrar",
+    "loading": "Yükleniyor",
+    "submit": "Gönder",
+    "cancel": "İptal",
+    "search": "Ara...",
+    "profile": "Profil",
+    "settings": "Ayarlar",
+    "logout": "Çıkış Yap"
+  },
+  "auth": {
+    "login": {
+      "title": "Giriş Yap",
+      "subtitle": "Hesabınıza giriş yapın",
+      "emailPlaceholder": "ornek@email.com",
+      "passwordPlaceholder": "Şifrenizi giriniz",
+      "forgotPassword": "Şifremi unuttum",
+      "loginButton": "Giriş yapılıyor",
+      "noAccount": "Hesabınız yok mu?",
+      "registerLink": "Kayıt olun",
+      "success": "Başarıyla giriş yapıldı",
+      "error": "Giriş yapılamadı"
+    },
+    "register": {
+      "title": "Kayıt Ol",
+      "subtitle": "Hesabınızı oluşturun",
+      "namePlaceholder": "Adınızı ve soyadınızı giriniz",
+      "emailPlaceholder": "ornek@email.com",
+      "passwordPlaceholder": "Şifrenizi giriniz",
+      "confirmPasswordPlaceholder": "Şifrenizi tekrar giriniz",
+      "registerButton": "Kayıt oluşturuluyor",
+      "hasAccount": "Zaten hesabınız var mı?",
+      "loginLink": "Giriş yapın",
+      "success": "Kayıt başarılı. Lütfen email adresinizi doğrulayın",
+      "error": "Kayıt işlemi başarısız"
+    },
+    "logout": {
+      "success": "Başarıyla çıkış yapıldı"
+    },
+    "verification": {
+      "title": "Email Doğrulama",
+      "subtitle": "Email adresinizi doğrulayın",
+      "verifying": "Doğrulanıyor...",
+      "verifyingDescription": "Email adresiniz doğrulanıyor, lütfen bekleyin.",
+      "checkEmail": "Email'inizi Kontrol Edin",
+      "checkEmailDescription": "Email adresinize doğrulama bağlantısı gönderdik.",
+      "successDescription": "Email adresiniz başarıyla doğrulandı. Artık uygulamayı kullanabilirsiniz.",
+      "errorDescription": "Doğrulama bağlantısı geçersiz veya süresi dolmuş. Yeni bir doğrulama emaili gönderebilirsiniz.",
+      "resendButton": "Yeniden Gönder",
+      "resending": "Gönderiliyor...",
+      "sent": "Doğrulama emaili gönderildi",
+      "success": "Email başarıyla doğrulandı",
+      "error": "Doğrulama emaili gönderilemedi",
+      "invalid": "Geçersiz doğrulama kodu",
+      "resent": "Doğrulama emaili yeniden gönderildi",
+      "resendError": "Doğrulama emaili yeniden gönderilemedi"
+    },
+    "forgotPassword": {
+      "title": "Şifremi Unuttum",
+      "subtitle": "Şifre sıfırlama bağlantısını email adresinize göndereceğiz",
+      "emailPlaceholder": "ornek@email.com",
+      "sendButton": "Sıfırlama Bağlantısı Gönder",
+      "sendingButton": "Gönderiliyor...",
+      "backToLogin": "Giriş sayfasına dön",
+      "sent": "Şifre sıfırlama emaili gönderildi",
+      "error": "Şifre sıfırlama emaili gönderilemedi"
+    },
+    "resetPassword": {
+      "title": "Şifre Sıfırla",
+      "subtitle": "Yeni şifrenizi belirleyin",
+      "newPassword": "Yeni Şifre",
+      "passwordPlaceholder": "Yeni şifrenizi giriniz",
+      "confirmPasswordPlaceholder": "Şifrenizi tekrar giriniz",
+      "resetButton": "Şifreyi Sıfırla",
+      "resettingButton": "Sıfırlanıyor...",
+      "invalidToken": "Geçersiz Bağlantı",
+      "invalidTokenDesc": "Şifre sıfırlama bağlantısı geçersiz veya süresi dolmuş.",
+      "success": "Şifre başarıyla sıfırlandı",
+      "error": "Şifre sıfırlanamadı"
+    },
+    "changePassword": {
+      "title": "Şifre Değiştir",
+      "subtitle": "Mevcut şifrenizi yenisiyle değiştirin",
+      "currentPassword": "Mevcut Şifre",
+      "newPassword": "Yeni Şifre",
+      "currentPasswordPlaceholder": "Mevcut şifrenizi giriniz",
+      "newPasswordPlaceholder": "Yeni şifrenizi giriniz",
+      "confirmPasswordPlaceholder": "Yeni şifrenizi tekrar giriniz",
+      "changeButton": "Şifremi Değiştir",
+      "changingButton": "Değiştiriliyor...",
+      "success": "Şifre başarıyla değiştirildi",
+      "error": "Şifre değiştirilemedi"
+    },
+    "validation": {
+      "emailRequired": "Email gereklidir",
+      "emailInvalid": "Geçerli bir email adresi giriniz",
+      "passwordRequired": "Şifre gereklidir",
+      "passwordMinLength": "Şifre en az 6 karakter olmalıdır",
+      "passwordMaxLength": "Şifre çok uzun",
+      "passwordStrength": "Şifre en az bir küçük harf, bir büyük harf ve bir sayı içermelidir",
+      "passwordsNotMatch": "Şifreler eşleşmiyor",
+      "nameRequired": "Ad gereklidir",
+      "nameMinLength": "Ad en az 2 karakter olmalıdır",
+      "nameMaxLength": "Ad çok uzun",
+      "currentPasswordRequired": "Mevcut şifre gereklidir"
+    },
+    "oauth": {
+      "messages": {
+        "loginSuccess": "Başarıyla giriş yapıldı"
+      },
+      "errors": {
+        "loginFailed": "OAuth girişi başarısız"
+      }
+    }
+  },
+  "user": {
+    "messages": {
+      "profileUpdated": "Profil başarıyla güncellendi",
+      "accountDeleted": "Hesap başarıyla silindi"
+    },
+    "errors": {
+      "profileFetch": "Profil bilgileri alınamadı",
+      "profileUpdate": "Profil güncellenemedi",
+      "accountDelete": "Hesap silinemedi"
+    }
+  },
+  "study": {
+    "title": "Çalışma",
+    "welcome": "Çalışmaya Hoş Geldiniz",
+    "subtitle": "AI destekli sorularla öğrenmeye başlayın",
+    "browseLessons": "Dersleri Keşfet",
+    "continueSession": "Oturumu Devam Ettir",
+    "activeSessionDescription": "Devam eden bir çalışma oturumunuz var",
+    "progress": "İlerleme",
+    "correctAnswers": "Doğru Cevaplar",
+    "continue": "Devam Et",
+    "totalLessons": "Toplam Dersler",
+    "studyTime": "Çalışma Süresi",
+    "accuracy": "Doğruluk",
+    "thisWeek": "bu hafta",
+    "overall": "genel",
+    "quickStart": "Hızlı Başlangıç",
+    "quickStartDescription": "Çalışmaya hemen başlamak için aşağıdaki seçeneklerden birini seçin",
+    "createStudyPlan": "Çalışma Planı Oluştur",
+    "recentActivity": "Son Aktivite",
+    "recentActivityDescription": "Son çalışma etkinlikleriniz",
+    "lastStudied": "Son çalışma",
+    "currentStreak": "Mevcut seri",
+    "days": "gün",
+    "noRecentActivity": "Henüz çalışma aktivitesi yok",
+    "availableNow": "şu anda mevcut",
+    "lessons": {
+      "study": "Çalışma",
+      "lessons": "Dersler",
+      "title": "Tüm Dersler",
+      "subtitle": "Seviyenize uygun dersleri seçin ve çalışmaya başlayın",
+      "searchPlaceholder": "Ders ara...",
+      "selectLevel": "Seviye Seç",
+      "selectCategory": "Kategori Seç",
+      "allLevels": "Tüm Seviyeler",
+      "allCategories": "Tüm Kategoriler",
+      "levels": {
+        "beginner": "Başlangıç",
+        "intermediate": "Orta",
+        "advanced": "İleri"
+      },
+      "categories": {
+        "math": "Matematik",
+        "science": "Fen",
+        "language": "Dil",
+        "history": "Tarih"
+      },
+      "showingResults": "{count} sonuç gösteriliyor",
+      "startLesson": "Dersi Başlat",
+      "noLessons": "Ders Bulunamadı",
+      "noLessonsDescription": "Arama kriterlerinizle eşleşen ders bulunamadı."
+    },
+    "lesson": {
+      "study": "Çalışma",
+      "lessons": "Dersler",
+      "lessonDetail": "Ders Detayı",
+      "title": "Ders İçeriği",
+      "subtitle": "Konuları inceleyin ve çalışmaya başlayın",
+      "startStudying": "Çalışmaya Başla",
+      "lessonOverview": "Ders Genel Bakış",
+      "lessonDescription": "Bu dersin içeriği ve konuları hakkında bilgi",
+      "difficulty": "Zorluk",
+      "duration": "Süre",
+      "topics": "Konular",
+      "topicsCount": "konu",
+      "topicsTitle": "Ders Konuları",
+      "practice": "Pratik Yap",
+      "noTopics": "Konu Bulunamadı",
+      "noTopicsDescription": "Bu derste henüz konu bulunmuyor.",
+      "readyToStart": "Başlamaya Hazır mısınız?",
+      "readyToStartDescription": "Tüm dersi çalışmaya başlayın veya dersler listesine dönün",
+      "startFullLesson": "Tüm Dersi Başlat",
+      "backToLessons": "Derslere Dön"
+    },
+    "session": {
+      "study": "Çalışma",
+      "session": "Oturum",
+      "activeSession": "Aktif Oturum",
+      "sessionInProgress": "Çalışma oturumunuz devam ediyor",
+      "continueSession": "Oturumu Devam Ettir",
+      "sessionProgress": "Oturum İlerlemesi",
+      "completed": "tamamlandı",
+      "correctAnswers": "Doğru Cevaplar",
+      "outOf": "/",
+      "accuracy": "Doğruluk",
+      "currentAccuracy": "mevcut doğruluk",
+      "timeElapsed": "Geçen Süre",
+      "since": "başladı",
+      "sessionActions": "Oturum İşlemleri",
+      "sessionActionsDescription": "Oturumunuzu yönetin",
+      "pauseSession": "Oturumu Duraklat",
+      "endSession": "Oturumu Bitir",
+      "noActiveSession": "Aktif Oturum Yok",
+      "noActiveSessionDescription": "Şu anda aktif bir çalışma oturumunuz bulunmuyor.",
+      "startNewSession": "Yeni Oturum Başlat",
+      "backToStudy": "Çalışmaya Dön"
+    },
+    "history": {
+      "study": "Çalışma",
+      "history": "Geçmiş",
+      "title": "Çalışma Geçmişi",
+      "subtitle": "Geçmiş çalışma oturumlarınızı görüntüleyin",
+      "sessionTitle": "Çalışma Oturumu",
+      "completed": "Tamamlandı",
+      "inProgress": "Devam Ediyor",
+      "correct": "Doğru",
+      "accuracy": "Doğruluk",
+      "duration": "Süre",
+      "status": "Durum",
+      "active": "Aktif",
+      "paused": "Duraklatıldı",
+      "noHistory": "Geçmiş Bulunamadı",
+      "noHistoryDescription": "Henüz çalışma geçmişiniz bulunmuyor."
+    },
+    "messages": {
+      "sessionStarted": "Çalışma oturumu başlatıldı",
+      "correctAnswer": "Doğru cevap!",
+      "incorrectAnswer": "Yanlış cevap",
+      "sessionCompleted": "Çalışma oturumu tamamlandı"
+    },
+    "errors": {
+      "lessonsFetch": "Dersler alınamadı",
+      "topicsFetch": "Konular alınamadı",
+      "sessionFetch": "Oturum bilgileri alınamadı",
+      "questionFetch": "Soru alınamadı",
+      "progressFetch": "İlerleme bilgileri alınamadı",
+      "historyFetch": "Geçmiş bilgileri alınamadı",
+      "sessionStart": "Oturum başlatılamadı",
+      "submitAnswer": "Cevap gönderilemedi",
+      "sessionEnd": "Oturum sonlandırılamadı"
+    }
+  },
+  "studyPlan": {
+    "messages": {
+      "planCreated": "Çalışma planı oluşturuldu",
+      "planUpdated": "Çalışma planı güncellendi",
+      "planDeleted": "Çalışma planı silindi",
+      "aiPlanGenerated": "AI ile çalışma planı oluşturuldu"
+    },
+    "errors": {
+      "plansFetch": "Çalışma planları alınamadı",
+      "planFetch": "Çalışma planı alınamadı",
+      "progressFetch": "İlerleme bilgileri alınamadı",
+      "planCreate": "Çalışma planı oluşturulamadı",
+      "planUpdate": "Çalışma planı güncellenemedi",
+      "planDelete": "Çalışma planı silinemedi",
+      "aiPlanGenerate": "AI çalışma planı oluşturulamadı"
+    }
+  },
+  "admin": {
+    "messages": {
+      "lessonCreated": "Ders oluşturuldu",
+      "lessonUpdated": "Ders güncellendi",
+      "lessonDeleted": "Ders silindi",
+      "topicCreated": "Konu oluşturuldu",
+      "topicUpdated": "Konu güncellendi",
+      "topicDeleted": "Konu silindi",
+      "questionCreated": "Soru oluşturuldu",
+      "questionUpdated": "Soru güncellendi",
+      "questionDeleted": "Soru silindi",
+      "questionsGenerated": "Sorular AI ile oluşturuldu",
+      "contentGenerated": "İçerik AI ile oluşturuldu"
+    },
+    "errors": {
+      "lessonsFetch": "Dersler alınamadı",
+      "topicsFetch": "Konular alınamadı",
+      "questionsFetch": "Sorular alınamadı",
+      "statsFetch": "İstatistikler alınamadı",
+      "lessonCreate": "Ders oluşturulamadı",
+      "lessonUpdate": "Ders güncellenemedi",
+      "lessonDelete": "Ders silinemedi",
+      "topicCreate": "Konu oluşturulamadı",
+      "topicUpdate": "Konu güncellenemedi",
+      "topicDelete": "Konu silinemedi",
+      "questionCreate": "Soru oluşturulamadı",
+      "questionUpdate": "Soru güncellenemedi",
+      "questionDelete": "Soru silinemedi",
+      "questionsGenerate": "Sorular AI ile oluşturulamadı",
+      "contentGenerate": "İçerik AI ile oluşturulamadı"
+    }
+  }
+}

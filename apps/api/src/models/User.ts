@@ -7,7 +7,13 @@ export interface IUser extends Document {
   name: string;
   role: "user" | "admin";
   profile: {
-    level: "beginner" | "intermediate" | "advanced";
+    level:
+      | "primary"
+      | "highschool"
+      | "university"
+      | "beginner"
+      | "intermediate"
+      | "advanced";
     preferences: {
       studyTimePerDay: number;
       preferredHours: string[];
@@ -71,7 +77,14 @@ const userSchema = new Schema<IUser>(
     profile: {
       level: {
         type: String,
-        enum: ["beginner", "intermediate", "advanced"],
+        enum: [
+          "primary",
+          "highschool",
+          "university",
+          "beginner",
+          "intermediate",
+          "advanced",
+        ],
         default: "beginner",
       },
       preferences: {
