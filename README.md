@@ -1,84 +1,123 @@
-# Turborepo starter
+# Testora - AI-Powered Study Platform 🎓
 
-This Turborepo starter is maintained by the Turborepo core team.
+An intelligent study and test preparation platform built with modern technologies, featuring adaptive learning, study plans, and comprehensive progress tracking.
 
-## Using this example
+## 🌟 Features
 
-Run the following command:
+### Core Functionality
+- **Smart Study Sessions**: Adaptive question difficulty based on performance
+- **Comprehensive Lesson Management**: Structured lessons with topics and questions
+- **AI-Powered Study Plans**: Personalized study schedules with AI recommendations
+- **Progress Tracking**: Detailed analytics on learning progress and performance
+- **Multi-Language Support**: Built with internationalization (i18n) support
+- **Session Management**: Real-time study sessions with time tracking
 
-```sh
-npx create-turbo@latest
-```
+### User Management
+- **Authentication System**: Secure login/registration with JWT tokens
+- **OAuth Integration**: Google and Apple sign-in support
+- **Email Verification**: Account verification workflow
+- **Password Reset**: Secure password recovery system
+- **Profile Management**: Customizable user profiles and preferences
 
-## What's inside?
+### Study Features
+- **Question Types**: Multiple choice, true/false, fill-in-the-blank, and essay questions
+- **Difficulty Levels**: Easy, medium, and hard question categories
+- **Study History**: Complete session history and performance analytics
+- **Streak Tracking**: Daily study streak monitoring
+- **Mastery System**: Topic mastery calculation based on performance
 
-This Turborepo includes the following packages/apps:
+### Admin Features
+- **Content Management**: Create and manage lessons, topics, and questions
+- **Bulk Operations**: Import multiple questions at once
+- **Analytics Dashboard**: System-wide statistics and user insights
+- **User Management**: Admin controls for user accounts
 
-### Apps and Packages
+## 🛠️ Tech Stack
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Frontend (Web App)
+- **Framework**: [Next.js 14](https://nextjs.org/) with App Router
+- **Language**: TypeScript
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [Radix UI](https://www.radix-ui.com/) + Custom components
+- **State Management**: [Zustand](https://zustand-demo.pmnd.rs/)
+- **API Client**: [TanStack Query](https://tanstack.com/query) (React Query)
+- **Forms**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) validation
+- **Internationalization**: [next-intl](https://next-intl-docs.vercel.app/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Notifications**: [Sonner](https://sonner.emilkowal.ski/)
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Backend (API)
+- **Runtime**: [Node.js](https://nodejs.org/)
+- **Framework**: [Fastify](https://www.fastify.io/)
+- **Language**: TypeScript
+- **Database**: [MongoDB](https://www.mongodb.com/) with [Mongoose ODM](https://mongoosejs.com/)
+- **Authentication**: JWT tokens with bcrypt password hashing
+- **OAuth**: Google and Apple OAuth integration
+- **Rate Limiting**: Request rate limiting middleware
+- **Security**: CORS, security headers, input validation
+- **Email**: SMTP email service integration
 
-### Utilities
+### DevOps & Tooling
+- **Monorepo**: [Turborepo](https://turbo.build/) for monorepo management
+- **Package Manager**: [pnpm](https://pnpm.io/)
+- **Linting**: [ESLint](https://eslint.org/) with custom configurations
+- **Code Formatting**: [Prettier](https://prettier.io/)
+- **Type Checking**: TypeScript with strict mode
+- **Git Hooks**: Pre-commit hooks for code quality
 
-This Turborepo has some additional tools already setup for you:
+## 📁 Project Structure
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
 
-### Build
 
-To build all apps and packages, run the following command:
+## 🚀 Getting Started
 
-```
-cd my-turborepo
-pnpm build
-```
+### Prerequisites
+- Node.js 18+ 
+- pnpm 8+
+- MongoDB instance
+- Google OAuth credentials (optional)
+- Apple OAuth credentials (optional)
 
-### Develop
+### Installation
 
-To develop all apps and packages, run the following command:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/testora.git
+   cd testora
+pnpm install
 
-```
-cd my-turborepo
+PORT=5000
+NODE_ENV=development
+MONGO_URI=mongodb://localhost:27017/testora
+JWT_SECRET=your-super-secret-jwt-key
+JWT_EXPIRES_IN=7d
+BCRYPT_ROUNDS=12
+
+# OAuth (Optional)
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+
+# Email (Optional)
+SMTP_HOST=your-smtp-host
+SMTP_PORT=587
+SMTP_USER=your-email
+SMTP_PASS=your-password
+
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+NEXTAUTH_SECRET=your-nextauth-secret
+NEXTAUTH_URL=http://localhost:3000
+
+# Start both API and Web in development mode
 pnpm dev
-```
 
-### Remote Caching
+# Or start individually
+pnpm --filter api dev
+pnpm --filter web dev
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+# Development
+pnpm dev              # Start all apps in development
+pnpm dev:api          # Start only API
+pnpm dev:web          # Start only web app
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+# Building
+pnpm
