@@ -1,3 +1,6 @@
+// Register module alias for path resolution
+import "module-alias/register";
+
 import fastify from "fastify";
 import { connectDatabase, config } from "@/config";
 import routes from "@/routes";
