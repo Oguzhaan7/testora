@@ -8,7 +8,13 @@ async function corsPlugin(fastify: FastifyInstance) {
         "http://localhost:3000",
         "http://localhost:3001",
         process.env.FRONTEND_URL,
+        "https://testora.vercel.app",
       ].filter(Boolean);
+
+      if (process.env.NODE_ENV === "development") {
+        callback(null, true);
+        return;
+      }
 
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);

@@ -1,4 +1,3 @@
-// Register module alias for path resolution
 import "module-alias/register";
 
 import fastify from "fastify";
@@ -56,10 +55,10 @@ const start = async () => {
 
     await app.listen({
       port: config.port,
-      host: config.host,
+      host: "0.0.0.0",
     });
 
-    console.log(`🚀 Server is running on http://${config.host}:${config.port}`);
+    console.log(`🚀 Server is running on port ${config.port}`);
   } catch (error) {
     app.log.error(error);
     process.exit(1);

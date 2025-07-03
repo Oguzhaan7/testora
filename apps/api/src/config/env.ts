@@ -4,13 +4,11 @@ dotenv.config();
 
 export const config = {
   port: parseInt(process.env.PORT || "5000"),
-  host: process.env.HOST || "localhost",
+  host: process.env.HOST || "0.0.0.0",
   nodeEnv: process.env.NODE_ENV || "development",
   mongoUri: process.env.MONGO_URI || "mongodb://localhost:27017/testora",
   jwt: {
-    secret:
-      process.env.JWT_SECRET ||
-      "your-super-secret-jwt-key-change-this-in-production",
+    secret: process.env.JWT_SECRET || "your-super-secret-jwt-key-change-this-in-production",
     expiresIn: process.env.JWT_EXPIRES_IN || "7d",
   },
   bcrypt: {
@@ -61,9 +59,7 @@ if (config.nodeEnv === "production") {
 
   for (const varName of requiredVars) {
     if (!process.env[varName]) {
-      throw new Error(
-        `Environment variable ${varName} is required in production`
-      );
+      throw new Error(`Environment variable ${varName} is required in production`);
     }
   }
 }
