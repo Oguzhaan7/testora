@@ -234,7 +234,7 @@ export const useDeleteQuestion = () => {
   });
 };
 
-export const useGenerateQuestions = () => {
+export const useAdminGenerateQuestions = () => {
   const queryClient = useQueryClient();
   const t = useTranslations("admin");
 

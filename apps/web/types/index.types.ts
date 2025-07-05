@@ -7,3 +7,6 @@ export * from "./question.types";
 export * from "./study-plan.types";
 export * from "./admin.types";
 export * from "./layout.types";
+export * from "./ai.types";
+export * from "./notification.types";
+export * from "./analytics.types";

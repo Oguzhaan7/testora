@@ -94,6 +94,17 @@ export const apiClient = {
       ...options,
     }),
 
+  patch: <T = unknown>(
+    endpoint: string,
+    data?: unknown,
+    options?: RequestConfig
+  ): Promise<T> =>
+    apiClient.request<T>(endpoint, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+      ...options,
+    }),
+
   delete: <T = unknown>(
     endpoint: string,
     options?: RequestConfig

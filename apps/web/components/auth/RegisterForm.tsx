@@ -18,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { AuthHeader } from "./AuthHeader";
 
 import {
   createAuthSchemas,
@@ -50,131 +51,136 @@ export function RegisterForm() {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader className="space-y-1">
-        {" "}
-        <CardTitle className="text-2xl font-bold text-center">
-          {t("register.title")}
-        </CardTitle>
-        <CardDescription className="text-center">
-          {t("register.subtitle")}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="name">{tCommon("name")}</Label>
-            <Input
-              id="name"
-              type="text"
-              placeholder={t("register.namePlaceholder")}
-              {...register("name")}
-              className={errors.name ? "border-red-500" : ""}
-            />
-            {errors.name && (
-              <p className="text-sm text-red-500">{errors.name.message}</p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">{tCommon("email")}</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder={t("register.emailPlaceholder")}
-              {...register("email")}
-              className={errors.email ? "border-red-500" : ""}
-            />
-            {errors.email && (
-              <p className="text-sm text-red-500">{errors.email.message}</p>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="password">{tCommon("password")}</Label>
-            <div className="relative">
+    <div>
+      <AuthHeader />
+      <Card className="w-full max-w-md mx-auto">
+        <CardHeader className="space-y-1">
+          {" "}
+          <CardTitle className="text-2xl font-bold text-center">
+            {t("register.title")}
+          </CardTitle>
+          <CardDescription className="text-center">
+            {t("register.subtitle")}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">{tCommon("name")}</Label>
               <Input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder={t("register.passwordPlaceholder")}
-                {...register("password")}
-                className={errors.password ? "border-red-500 pr-10" : "pr-10"}
+                id="name"
+                type="text"
+                placeholder={t("register.namePlaceholder")}
+                {...register("name")}
+                className={errors.name ? "border-red-500" : ""}
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-              >
-                {showPassword ? (
-                  <EyeOff className="h-4 w-4" />
-                ) : (
-                  <Eye className="h-4 w-4" />
-                )}
-              </button>
+              {errors.name && (
+                <p className="text-sm text-red-500">{errors.name.message}</p>
+              )}
             </div>
-            {errors.password && (
-              <p className="text-sm text-red-500">{errors.password.message}</p>
-            )}
-          </div>{" "}
-          <div className="space-y-2">
-            <Label htmlFor="confirmPassword">
-              {tCommon("confirmPassword")}
-            </Label>
-            <div className="relative">
+            <div className="space-y-2">
+              <Label htmlFor="email">{tCommon("email")}</Label>
               <Input
-                id="confirmPassword"
-                type={showConfirmPassword ? "text" : "password"}
-                placeholder={t("register.confirmPasswordPlaceholder")}
-                {...register("confirmPassword")}
-                className={
-                  errors.confirmPassword ? "border-red-500 pr-10" : "pr-10"
-                }
+                id="email"
+                type="email"
+                placeholder={t("register.emailPlaceholder")}
+                {...register("email")}
+                className={errors.email ? "border-red-500" : ""}
               />
-              <button
-                type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-              >
-                {showConfirmPassword ? (
-                  <EyeOff className="h-4 w-4" />
-                ) : (
-                  <Eye className="h-4 w-4" />
-                )}
-              </button>
+              {errors.email && (
+                <p className="text-sm text-red-500">{errors.email.message}</p>
+              )}
             </div>
-            {errors.confirmPassword && (
-              <p className="text-sm text-red-500">
-                {errors.confirmPassword.message}
-              </p>
-            )}
+            <div className="space-y-2">
+              <Label htmlFor="password">{tCommon("password")}</Label>
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder={t("register.passwordPlaceholder")}
+                  {...register("password")}
+                  className={errors.password ? "border-red-500 pr-10" : "pr-10"}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4" />
+                  ) : (
+                    <Eye className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+              {errors.password && (
+                <p className="text-sm text-red-500">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>{" "}
+            <div className="space-y-2">
+              <Label htmlFor="confirmPassword">
+                {tCommon("confirmPassword")}
+              </Label>
+              <div className="relative">
+                <Input
+                  id="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder={t("register.confirmPasswordPlaceholder")}
+                  {...register("confirmPassword")}
+                  className={
+                    errors.confirmPassword ? "border-red-500 pr-10" : "pr-10"
+                  }
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                >
+                  {showConfirmPassword ? (
+                    <EyeOff className="h-4 w-4" />
+                  ) : (
+                    <Eye className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+              {errors.confirmPassword && (
+                <p className="text-sm text-red-500">
+                  {errors.confirmPassword.message}
+                </p>
+              )}
+            </div>
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={isSubmitting || registerMutation.isPending}
+            >
+              {" "}
+              {registerMutation.isPending ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  {t("register.registerButton")}
+                </>
+              ) : (
+                t("register.title")
+              )}
+            </Button>
+          </form>
+
+          <Separator />
+
+          <div className="text-center text-sm">
+            <span className="text-gray-600">{t("register.hasAccount")} </span>
+            <Link
+              href="/login"
+              className="text-blue-600 hover:text-blue-500 font-medium"
+            >
+              {t("register.loginLink")}
+            </Link>
           </div>
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isSubmitting || registerMutation.isPending}
-          >
-            {" "}
-            {registerMutation.isPending ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                {t("register.registerButton")}
-              </>
-            ) : (
-              t("register.title")
-            )}
-          </Button>
-        </form>
-
-        <Separator />
-
-        <div className="text-center text-sm">
-          <span className="text-gray-600">{t("register.hasAccount")} </span>
-          <Link
-            href="/login"
-            className="text-blue-600 hover:text-blue-500 font-medium"
-          >
-            {t("register.loginLink")}
-          </Link>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

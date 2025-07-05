@@ -4,3 +4,6 @@ export * from "./use-oauth-queries";
 export * from "./use-study-queries";
 export * from "./use-study-plan-queries";
 export * from "./use-admin-queries";
+export * from "./use-ai-queries";
+export * from "./use-notification-queries";
+export * from "./use-analytics-queries";
