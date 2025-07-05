@@ -3,6 +3,7 @@ export * from "./user";
 export * from "./api";
 export * from "./errors";
 export * from "./oauth";
+export * from "./ai.types";
 
 export interface RegisterRequest {
   email: string;

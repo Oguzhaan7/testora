@@ -148,4 +148,48 @@ export class EmailService {
       console.error("Confirmation email sending failed:", error);
     }
   }
+
+  async sendNotification(
+    email: string,
+    name: string,
+    title: string,
+    message: string,
+    actionUrl?: string
+  ) {
+    const mailOptions = {
+      from: `"Testora" <${config.email.from}>`,
+      to: email,
+      subject: `${title} - Testora`,
+      html: `
+        <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+          <h2 style="color: #333;">Hello ${name},</h2>
+          <h3 style="color: #007bff;">${title}</h3>
+          <p>${message}</p>
+          ${
+            actionUrl
+              ? `
+          <div style="text-align: center; margin: 30px 0;">
+            <a href="${config.frontend.url}${actionUrl}" 
+               style="background-color: #28a745; color: white; padding: 12px 30px; 
+                      text-decoration: none; border-radius: 5px; display: inline-block;">
+              View Details
+            </a>
+          </div>
+          `
+              : ""
+          }
+          <hr style="margin: 30px 0;">
+          <p style="color: #999; font-size: 12px;">Testora Team</p>
+        </div>
+      `,
+    };
+
+    try {
+      await this.transporter.sendMail(mailOptions);
+      console.log(`Notification sent to ${email}`);
+    } catch (error) {
+      console.error("Notification email sending failed:", error);
+      throw new Error("Failed to send notification email");
+    }
+  }
 }

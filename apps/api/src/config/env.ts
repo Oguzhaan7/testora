@@ -8,7 +8,9 @@ export const config = {
   nodeEnv: process.env.NODE_ENV || "development",
   mongoUri: process.env.MONGO_URI || "mongodb://localhost:27017/testora",
   jwt: {
-    secret: process.env.JWT_SECRET || "your-super-secret-jwt-key-change-this-in-production",
+    secret:
+      process.env.JWT_SECRET ||
+      "your-super-secret-jwt-key-change-this-in-production",
     expiresIn: process.env.JWT_EXPIRES_IN || "7d",
   },
   bcrypt: {
@@ -41,11 +43,16 @@ export const config = {
   frontend: {
     url: process.env.FRONTEND_URL || "http://localhost:3000",
   },
+  ai: {
+    geminiApiKey: process.env.GEMINI_API_KEY || "",
+    provider: process.env.AI_PROVIDER || "gemini",
+  },
 };
 
 if (config.nodeEnv === "production") {
   const requiredVars = [
     "JWT_SECRET",
+    "GEMINI_API_KEY",
     "GOOGLE_CLIENT_ID",
     "GOOGLE_CLIENT_SECRET",
     "APPLE_CLIENT_ID",
@@ -59,7 +66,9 @@ if (config.nodeEnv === "production") {
 
   for (const varName of requiredVars) {
     if (!process.env[varName]) {
-      throw new Error(`Environment variable ${varName} is required in production`);
+      throw new Error(
+        `Environment variable ${varName} is required in production`
+      );
     }
   }
 }

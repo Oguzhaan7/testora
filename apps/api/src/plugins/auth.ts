@@ -54,12 +54,10 @@ async function authPlugin(fastify: FastifyInstance) {
           length: decoded.userId?.length,
         });
 
-        // userId'yi string olarak set et
         request.userId = decoded.userId.toString();
 
         console.log("Auth plugin - userId set to:", request.userId);
 
-        // User bilgisini fetch et
         const user = await userService.getUserById(decoded.userId);
         if (!user || !user.isActive) {
           throw new AuthenticationError("User not found or inactive");

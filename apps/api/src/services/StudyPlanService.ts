@@ -1,6 +1,7 @@
 import { StudyPlan, UserProgress, User } from "@/models";
 import { IStudyPlan, IPlanItem } from "@/models/StudyPlan";
 import { ValidationError, NotFoundError } from "@/types";
+import { aiService } from "./AIService";
 import mongoose from "mongoose";
 
 export interface CreateStudyPlanRequest {
@@ -149,30 +150,16 @@ export class StudyPlanService {
       userId: new mongoose.Types.ObjectId(userId),
     }).populate("lessonId topicId");
 
-    const suggestedPlan = await this.mockAIPlanGeneration(
-      preferences,
-      userProgress
-    );
+    const aiPlan = await aiService.generateStudyPlan({
+      userId,
+      examType: preferences.examType,
+      targetDate: preferences.targetDate,
+      studyTimePerDay: preferences.studyTimePerDay,
+      currentLevel: preferences.currentLevel,
+      weakAreas: preferences.weakAreas,
+      language: "tr",
+    });
 
-    return suggestedPlan;
-  }
-
-  private async mockAIPlanGeneration(preferences: any, userProgress: any[]) {
-    return {
-      title: `${preferences.examType} Preparation Plan`,
-      description: `${preferences.currentLevel} level ${preferences.examType} preparation plan`,
-      estimatedSuccess: 85,
-      totalStudyHours: Math.round(
-        (((preferences.targetDate.getTime() - Date.now()) /
-          (1000 * 60 * 60 * 24)) *
-          preferences.studyTimePerDay) /
-          60
-      ),
-      recommendations: [
-        "Keep your daily study time consistent",
-        "Focus more on your weak areas",
-        "Review regularly",
-      ],
-    };
+    return aiPlan;
   }
 }

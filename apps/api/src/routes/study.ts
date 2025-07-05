@@ -232,4 +232,43 @@ export default async function studyRoutes(fastify: FastifyInstance) {
       }
     }
   );
+
+  fastify.post(
+    "/explanation",
+    {
+      preHandler: fastify.authenticate,
+    },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      try {
+        const userId = (request as any).userId;
+        const { questionId, userAnswer, language } = request.body as {
+          questionId: string;
+          userAnswer: string;
+          language?: "tr" | "en";
+        };
+
+        const explanation = await studyService.getAIExplanation(
+          userId,
+          questionId,
+          userAnswer,
+          language
+        );
+
+        const response: ApiResponse = {
+          success: true,
+          data: { explanation },
+          message: "AI explanation generated successfully",
+        };
+
+        reply.send(response);
+      } catch (error: any) {
+        const response: ApiResponse = {
+          success: false,
+          error: error.message,
+        };
+
+        reply.status(error.statusCode || 500).send(response);
+      }
+    }
+  );
 }

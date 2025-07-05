@@ -1557,6 +1557,137 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "AI Services",
+      "item": [
+        {
+          "name": "Generate Questions",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Generate questions successful', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    pm.expect(pm.response.json().success).to.be.true;",
+                  "    pm.expect(pm.response.json().data.questions).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lessonId\": \"{{lesson_id}}\",\n  \"topicId\": \"{{topic_id}}\",\n  \"difficulty\": \"easy\",\n  \"questionType\": \"multiple_choice\",\n  \"count\": 5,\n  \"language\": \"tr\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/ai/generate-questions",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "ai", "generate-questions"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Explanation",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Generate explanation successful', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    pm.expect(pm.response.json().success).to.be.true;",
+                  "    pm.expect(pm.response.json().data.explanation).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"questionId\": \"{{question_id}}\",\n  \"userAnswer\": \"A\",\n  \"correctAnswer\": \"B\",\n  \"language\": \"tr\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/ai/generate-explanation",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "ai", "generate-explanation"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AI Chat",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('AI chat successful', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    pm.expect(pm.response.json().success).to.be.true;",
+                  "    pm.expect(pm.response.json().data.response).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"İngilizce present tense konusunda yardıma ihtiyacım var. Nasıl çalışmalıyım?\",\n  \"context\": {\n    \"lessonId\": \"{{lesson_id}}\",\n    \"topicId\": \"{{topic_id}}\",\n    \"recentQuestions\": [\"Present tense question 1\", \"Present tense question 2\"]\n  },\n  \"language\": \"tr\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/ai/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "ai", "chat"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "auth": {

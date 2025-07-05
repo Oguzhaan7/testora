@@ -12,3 +12,4 @@ export { UserProgress } from "./UserProgress";
 export { AICache } from "./AICache";
 export { AIPrompt } from "./AIPrompt";
 export { Notification } from "./Notification";
+export { DailyAnalytics } from "./DailyAnalytics";

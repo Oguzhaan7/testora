@@ -11,24 +11,14 @@ import {
 import { IUserSession } from "@/models/UserSession";
 import { IQuestion } from "@/models/Question";
 import { IStudyPlan, IPlanItem } from "@/models/StudyPlan";
-import { ValidationError, NotFoundError } from "@/types";
+import {
+  ValidationError,
+  NotFoundError,
+  StartStudySessionRequest,
+  SubmitAnswerRequest,
+} from "@/types";
+import { aiService } from "./AIService";
 import mongoose from "mongoose";
-
-export interface StartStudySessionRequest {
-  lessonId: string;
-  topicId: string;
-  sessionType: "practice" | "test" | "review";
-  questionCount?: number;
-  difficulty?: "easy" | "medium" | "hard";
-}
-
-export interface SubmitAnswerRequest {
-  sessionId: string;
-  questionId: string;
-  selectedOption: string | number;
-  timeSpent: number;
-  hintsUsed?: number;
-}
 
 export interface StudySessionResponse {
   session: IUserSession;
@@ -246,7 +236,7 @@ export class StudyService {
 
     await this.updateUserProgress(userId, session);
 
-    const sessionStats = {
+    const sessionStats: any = {
       sessionId: session._id,
       duration: session.totalTime,
       questionsAttempted: session.questionsAttempted,
@@ -255,7 +245,82 @@ export class StudyService {
       avgTimePerQuestion: session.avgTimePerQuestion,
     };
 
+    if (session.score < 60) {
+      try {
+        const recommendations = await this.generatePerformanceRecommendations(
+          userId,
+          sessionId
+        );
+        sessionStats.recommendations = recommendations;
+      } catch (error) {
+        console.error("Failed to generate recommendations:", error);
+      }
+    }
+
     return sessionStats;
+  }
+
+  async generatePerformanceRecommendations(
+    userId: string,
+    sessionId: string
+  ): Promise<string> {
+    const session = await UserSession.findById(sessionId)
+      .populate("lessonId", "name")
+      .populate("topicId", "name");
+
+    if (!session) {
+      throw new NotFoundError("Session not found");
+    }
+
+    const recentAttempts = await QuestionAttempt.find({
+      userId: new mongoose.Types.ObjectId(userId),
+      sessionId: new mongoose.Types.ObjectId(sessionId),
+    })
+      .populate("questionId")
+      .limit(5);
+
+    const context = {
+      lessonId: session.lessonId._id.toString(),
+      topicId: session.topicId._id.toString(),
+      recentQuestions: recentAttempts.map(
+        (attempt) =>
+          `${(attempt.questionId as any).questionText} - ${attempt.isCorrect ? "Correct" : "Incorrect"}`
+      ),
+    };
+
+    const lessonName = (session.lessonId as any).name;
+    const topicName = (session.topicId as any).name;
+
+    const message = `I just completed a study session on "${lessonName}" - "${topicName}" topic. 
+    My score was ${session.score}% (${session.correctAnswers}/${session.questionsAttempted} correct).
+    Average time per question: ${session.avgTimePerQuestion} seconds.
+    Can you provide specific recommendations to improve my performance?`;
+
+    return await aiService.chatWithAI({
+      userId,
+      message,
+      context,
+      language: "en",
+    });
+  }
+
+  async getAIExplanation(
+    userId: string,
+    questionId: string,
+    userAnswer: string,
+    language: "tr" | "en" = "tr"
+  ): Promise<string> {
+    const question = await Question.findById(questionId);
+    if (!question) {
+      throw new NotFoundError("Question not found");
+    }
+
+    return await aiService.generateExplanation({
+      questionId,
+      userAnswer,
+      correctAnswer: question.correctAnswer.toString(),
+      language,
+    });
   }
 
   private checkAnswer(
