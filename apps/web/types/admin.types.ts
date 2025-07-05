@@ -1,5 +1,5 @@
 export interface CreateLessonData {
-  title: string;
+  name: string;
   description: string;
   level: "beginner" | "intermediate" | "advanced";
   category: string;
@@ -7,7 +7,7 @@ export interface CreateLessonData {
 }
 
 export interface UpdateLessonData {
-  title?: string;
+  name?: string;
   description?: string;
   level?: "beginner" | "intermediate" | "advanced";
   category?: string;
@@ -16,17 +16,19 @@ export interface UpdateLessonData {
 
 export interface CreateTopicData {
   lessonId: string;
-  title: string;
+  name: string;
   description: string;
   content: string;
+  difficulty: number;
   order: number;
   isActive?: boolean;
 }
 
 export interface UpdateTopicData {
-  title?: string;
+  name?: string;
   description?: string;
   content?: string;
+  difficulty?: number;
   order?: number;
   isActive?: boolean;
 }

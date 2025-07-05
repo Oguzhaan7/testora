@@ -12,7 +12,58 @@
     "search": "Ara...",
     "profile": "Profil",
     "settings": "Ayarlar",
+    "logout": "Çıkış Yap",
+    "inProgress": {
+      "title": "Yakında Geliyor!",
+      "description": "Bu özellik şu anda geliştirilmekte olup yakında kullanıma sunulacak.",
+      "estimatedCompletion": "Tahmini Tamamlanma",
+      "upcomingFeatures": "Yakında Gelecek Özellikler",
+      "backToHome": "Anasayfaya Dön"
+    }
+  },
+  "layout": {
+    "signIn": "Giriş Yap",
+    "signUp": "Kayıt Ol",
+    "profile": "Profil",
+    "settings": "Ayarlar",
+    "notifications": "Bildirimler",
+    "billing": "Faturalandırma",
+    "help": "Yardım",
     "logout": "Çıkış Yap"
+  },
+  "navigation": {
+    "dashboard": "Anasayfa",
+    "study": "Çalışma",
+    "analytics": "Analitik",
+    "studyPlans": "Çalışma Planları",
+    "ai": "AI Öğretmen"
+  },
+  "dashboard": {
+    "title": "Anasayfa",
+    "welcome": "Tekrar hoşgeldin, {name}!",
+    "subtitle": "Öğrenme yolculuğunuzda neler oluyor",
+    "level": "Seviye {level}",
+    "fromLastWeek": "geçen haftadan",
+    "stats": {
+      "totalStudyTime": "Toplam Çalışma Süresi",
+      "completedLessons": "Tamamlanan Dersler",
+      "currentStreak": "Mevcut Seri",
+      "accuracy": "Doğruluk Oranı"
+    },
+    "quickActions": "Hızlı İşlemler",
+    "quickActionsDescription": "Öğrenme aktivitelerinize hızlıca geçin",
+    "actions": {
+      "startStudy": "Çalışmaya Başla",
+      "viewProgress": "İlerlemeyi Gör",
+      "createPlan": "Çalışma Planı Oluştur",
+      "aiChat": "AI Öğretmen"
+    },
+    "recentActivity": "Son Aktiviteler",
+    "recentActivityDescription": "Son öğrenme aktiviteleriniz",
+    "completedLesson": "Matematik Dersini Tamamladı",
+    "achievedStreak": "7 günlük seri elde etti",
+    "usedAITutor": "Yardım için AI Öğretmen kullandı",
+    "timeAgo": "{time} önce"
   },
   "auth": {
     "login": {
@@ -171,10 +222,11 @@
         "advanced": "İleri"
       },
       "categories": {
-        "math": "Matematik",
-        "science": "Fen",
-        "language": "Dil",
-        "history": "Tarih"
+        "English": "İngilizce",
+        "Mathematics": "Matematik",
+        "Science": "Fen",
+        "Language": "Dil",
+        "History": "Tarih"
       },
       "showingResults": "{count} sonuç gösteriliyor",
       "startLesson": "Dersi Başlat",
@@ -205,26 +257,60 @@
     },
     "session": {
       "study": "Çalışma",
-      "session": "Oturum",
+      "lessons": "Dersler",
       "activeSession": "Aktif Oturum",
-      "sessionInProgress": "Çalışma oturumunuz devam ediyor",
-      "continueSession": "Oturumu Devam Ettir",
-      "sessionProgress": "Oturum İlerlemesi",
-      "completed": "tamamlandı",
+      "sessionSummary": "Oturum Özeti",
+      "startSession": "Oturum Başlat",
+      "title": "Çalışma Oturumu Başlat",
+      "subtitle": "Çalışma oturumunuzu yapılandırın ve öğrenmeye başlayın",
+      "sessionSettings": "Oturum Ayarları",
+      "sessionSettingsDescription": "Başlamadan önce oturum yapılandırmanızı gözden geçirin",
+      "questionCount": "Sorular",
+      "questions": "soru",
+      "estimatedTime": "Tahmini Süre",
+      "difficulty": "Zorluk",
+      "adaptive": "Adaptif",
+      "selectTopic": "Konu Seç",
+      "start": "Başlat",
+      "noTopics": "Konu Bulunamadı",
+      "noTopicsDescription": "Bu derste çalışacak konu bulunmuyor.",
+      "backToLessons": "Derslere Dön",
+      "startingSession": "Oturum Başlatılıyor...",
+      "preparingQuestions": "{topic} için sorular hazırlanıyor",
+      "loadingQuestion": "Soru yükleniyor...",
+      "loadingSummary": "Oturum özeti yükleniyor...",
+      "noQuestion": "Soru bulunamadı",
+      "backToStudy": "Çalışmaya Dön",
+      "question": "Soru",
+      "of": "/",
       "correctAnswers": "Doğru Cevaplar",
-      "outOf": "/",
       "accuracy": "Doğruluk",
-      "currentAccuracy": "mevcut doğruluk",
-      "timeElapsed": "Geçen Süre",
-      "since": "başladı",
-      "sessionActions": "Oturum İşlemleri",
-      "sessionActionsDescription": "Oturumunuzu yönetin",
-      "pauseSession": "Oturumu Duraklat",
-      "endSession": "Oturumu Bitir",
-      "noActiveSession": "Aktif Oturum Yok",
-      "noActiveSessionDescription": "Şu anda aktif bir çalışma oturumunuz bulunmuyor.",
-      "startNewSession": "Yeni Oturum Başlat",
-      "backToStudy": "Çalışmaya Dön"
+      "correct": "Doğru!",
+      "incorrect": "Yanlış",
+      "exitSession": "Oturumdan Çık",
+      "submitting": "Gönderiliyor...",
+      "submitAnswer": "Cevapı Gönder",
+      "nextQuestion": "Sonraki Soru",
+      "finishSession": "Oturumu Bitir",
+      "sessionCompleted": "Oturum Tamamlandı!",
+      "excellentPerformance": "Mükemmel iş! Bu konuya hakim oluyorsunuz.",
+      "goodPerformance": "İyi iş! Daha da gelişmek için pratik yapmaya devam edin.",
+      "needsImprovement": "Pratik yapmaya devam edin! İlerleme kaydediyorsunuz.",
+      "totalQuestions": "Toplam Soru",
+      "timeSpent": "Harcanan Süre",
+      "sessionDetails": "Oturum Detayları",
+      "topic": "Konu",
+      "topicCompleted": "Konu Tamamlandı",
+      "lesson": "Ders",
+      "lessonCompleted": "Ders Tamamlandı",
+      "averageTimePerQuestion": "Soru Başına Ortalama Süre",
+      "completedAt": "Tamamlanma Zamanı",
+      "studyAgain": "Tekrar Çalış",
+      "browseLessons": "Dersleri Keşfet",
+      "backToDashboard": "Panele Dön",
+      "encouragementExcellent": "🎉 Mükemmel performans! Gerçekten bu konuya hakim oluyorsunuz!",
+      "encouragementGood": "👏 Aferin! Birkaç pratik daha yaparsanız uzman olacaksınız!",
+      "encouragementKeepTrying": "💪 Pes etmeyin! Her uzman bir zamanlar acemiydi. Pratik yapmaya devam edin!"
     },
     "history": {
       "study": "Çalışma",
@@ -437,5 +523,28 @@
         "cta": "Satış Ekibiyle İletişime Geç"
       }
     }
+  },
+  "aiQuestions": {
+    "title": "AI Soru Oluşturucu",
+    "subtitle": "AI yardımı ile soru oluşturun ve yönetin",
+    "manageLessons": "Dersleri Yönet",
+    "manageTopics": "Konuları Yönet",
+    "generateQuestions": "Soru Oluştur",
+    "features": {
+      "smartGeneration": "Akıllı Soru Oluşturma",
+      "adaptiveDifficulty": "Uyarlanabilir Zorluk",
+      "multipleFormats": "Çoklu Format"
+    }
+  },
+  "pages": {
+    "comingSoon": "Yakında Geliyor",
+    "inDevelopment": "Bu sayfa şu anda geliştirilmektedir"
+  },
+  "difficulty": {
+    "easy": "Kolay",
+    "medium": "Orta",
+    "hard": "Zor",
+    "veryHard": "Çok Zor",
+    "expert": "Uzman"
   }
 }

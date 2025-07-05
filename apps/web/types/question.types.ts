@@ -1,19 +1,24 @@
 export interface Question {
+  _id?: string;
   id: string;
   topicId: string;
-  question: string;
-  type: "multiple_choice" | "true_false" | "fill_blank";
+  question?: string;
+  questionText?: string;
+  type?: "multiple_choice" | "true_false" | "fill_blank";
+  questionType?: "multiple_choice" | "true_false" | "fill_blank" | "essay";
   options?: string[];
   correctAnswer: string;
   explanation: string;
   difficulty: "easy" | "medium" | "hard";
-  order: number;
+  order?: number;
   isActive: boolean;
 }
 
 export interface StudySession {
-  id: string;
+  _id?: string;
+  id?: string;
   userId: string;
+  lessonId?: string;
   topicId: string;
   status: "active" | "completed" | "paused";
   startedAt: string;
@@ -22,6 +27,18 @@ export interface StudySession {
   totalQuestions: number;
   correctAnswers: number;
   incorrectAnswers: number;
+  questionsAttempted: number;
+}
+
+export interface StudySessionResponse {
+  session: StudySession;
+  currentQuestion?: Question | null;
+  progress: {
+    questionsAttempted: number;
+    totalQuestions: number;
+    correctAnswers: number;
+    timeElapsed: number;
+  };
 }
 
 export interface SessionSummary {
@@ -46,15 +63,29 @@ export interface UserProgress {
   lastStudyDate?: string;
 }
 
+export interface StudySessionResponse {
+  session: StudySession;
+  currentQuestion?: Question | null;
+  progress: {
+    questionsAttempted: number;
+    totalQuestions: number;
+    correctAnswers: number;
+    timeElapsed: number;
+  };
+}
+
 export interface StartStudySessionData {
+  lessonId?: string;
   topicId: string;
   questionCount?: number;
   difficulty?: string;
+  sessionType?: string;
 }
 
 export interface SubmitAnswerData {
   sessionId: string;
   questionId: string;
-  userAnswer: string;
+  selectedOption: string;
   timeSpent: number;
+  hintsUsed?: number;
 }

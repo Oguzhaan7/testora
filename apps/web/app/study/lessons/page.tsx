@@ -42,12 +42,18 @@ export default function LessonsPage() {
   const filteredLessons =
     lessons?.lessons?.filter(
       (lesson) =>
-        lesson?.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        lesson?.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         lesson?.description?.toLowerCase().includes(searchQuery.toLowerCase())
     ) || [];
 
   const levels = ["beginner", "intermediate", "advanced"];
-  const categories = ["math", "science", "language", "history"];
+  const categories = [
+    "English",
+    "Mathematics",
+    "Science",
+    "Language",
+    "History",
+  ];
 
   return (
     <AppLayout
@@ -132,14 +138,14 @@ export default function LessonsPage() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filteredLessons.map((lesson) => (
                 <Card
-                  key={lesson.id}
+                  key={lesson._id}
                   className="hover:shadow-md transition-shadow"
                 >
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <CardTitle className="line-clamp-1">
-                          {lesson.title}
+                          {lesson.name}
                         </CardTitle>
                         <CardDescription className="line-clamp-2 mt-1">
                           {lesson.description}
@@ -164,7 +170,7 @@ export default function LessonsPage() {
                       <div className="flex items-center justify-between">
                         <Badge variant="secondary">{lesson.category}</Badge>
                         <Button asChild size="sm">
-                          <Link href={`/study/lessons/${lesson.id}`}>
+                          <Link href={`/study/lessons/${lesson._id}`}>
                             {t("startLesson")}
                           </Link>
                         </Button>

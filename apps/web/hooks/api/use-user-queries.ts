@@ -29,7 +29,6 @@ export const useUpdateProfile = () => {
   return useMutation({
     mutationFn: (data: UpdateProfileRequest) => userApi.updateProfile(data),
     onSuccess: (data) => {
-      // Convert UserDetail to User format for AuthStore
       if (data.user) {
         const userForStore = {
           _id: data.user._id,

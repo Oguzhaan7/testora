@@ -8,6 +8,7 @@ import {
   UserProgress,
   QuestionAttempt,
 } from "@/models";
+import { AdminService } from "./AdminService";
 import { IUserSession } from "@/models/UserSession";
 import { IQuestion } from "@/models/Question";
 import { IStudyPlan, IPlanItem } from "@/models/StudyPlan";
@@ -32,6 +33,11 @@ export interface StudySessionResponse {
 }
 
 export class StudyService {
+  private adminService: AdminService;
+
+  constructor() {
+    this.adminService = new AdminService();
+  }
   async getLessons(level?: string, category?: string) {
     const filter: any = { isActive: true };
 
@@ -437,6 +443,104 @@ export class StudyService {
       completed: false,
     }).populate("lessonId topicId");
 
+    if (activeSession) {
+      const sessionObject = activeSession.toObject();
+      if (
+        sessionObject.lessonId &&
+        typeof sessionObject.lessonId === "object"
+      ) {
+        sessionObject.lessonId = (sessionObject.lessonId as any)._id.toString();
+      }
+      if (sessionObject.topicId && typeof sessionObject.topicId === "object") {
+        sessionObject.topicId = (sessionObject.topicId as any)._id.toString();
+      }
+      return sessionObject;
+    }
+
     return activeSession;
+  }
+  async getSessionQuestion(userId: string, sessionId: string) {
+    if (!mongoose.Types.ObjectId.isValid(sessionId)) {
+      throw new NotFoundError("Invalid session ID format");
+    }
+
+    const session = await UserSession.findById(sessionId);
+
+    if (!session) {
+      throw new NotFoundError("Session not found");
+    }
+
+    if (session.userId.toString() !== userId) {
+      throw new ValidationError("Unauthorized session access");
+    }
+
+    if (session.completed) {
+      throw new ValidationError("Session already completed");
+    }
+
+    const excludeIds = await QuestionAttempt.find({
+      sessionId: new mongoose.Types.ObjectId(sessionId),
+    }).distinct("questionId");
+
+    const excludeIdsString = excludeIds.map((id) => id.toString());
+
+    let questions = await this.adminService.getQuestionsByTopic(
+      session.topicId.toString()
+    );
+    let availableQuestions = questions.questions?.filter(
+      (q: any) => !excludeIdsString.includes(q._id.toString())
+    );
+
+    if (!availableQuestions || availableQuestions.length === 0) {
+      const lessonQuestions = await this.adminService.getQuestionsByLesson(
+        session.lessonId.toString()
+      );
+      availableQuestions = lessonQuestions.questions?.filter(
+        (q: any) => !excludeIdsString.includes(q._id.toString())
+      );
+    }
+
+    if (!availableQuestions || availableQuestions.length === 0) {
+      throw new NotFoundError("No more questions available");
+    }
+
+    const question =
+      availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
+
+    return question;
+  }
+
+  async endSession(userId: string, sessionId: string) {
+    const session = await UserSession.findById(sessionId);
+
+    if (!session) {
+      throw new NotFoundError("Session not found");
+    }
+
+    if (session.userId.toString() !== userId) {
+      throw new ValidationError("Unauthorized session access");
+    }
+
+    if (session.completed) {
+      throw new ValidationError("Session already completed");
+    }
+
+    session.completed = true;
+    session.endTime = new Date();
+    session.score = Math.round(
+      (session.correctAnswers / session.questionsAttempted) * 100
+    );
+    await session.save();
+
+    const summary = {
+      totalQuestions: session.questionsAttempted,
+      correctAnswers: session.correctAnswers,
+      incorrectAnswers: session.questionsAttempted - session.correctAnswers,
+      accuracy: session.score,
+      timeSpent: session.totalTime,
+      completedAt: session.endTime.toISOString(),
+    };
+
+    return { session, summary };
   }
 }

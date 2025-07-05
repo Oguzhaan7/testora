@@ -51,7 +51,7 @@ export const adminApi = {
 
   getTopicsByLesson: async (lessonId: string): Promise<{ topics: Topic[] }> => {
     return apiClient.get<{ topics: Topic[] }>(
-      `/v1/admin/topics/lesson/${lessonId}`
+      `/v1/admin/lessons/${lessonId}/topics`
     );
   },
 
@@ -79,7 +79,7 @@ export const adminApi = {
     topicId: string
   ): Promise<{ questions: Question[] }> => {
     return apiClient.get<{ questions: Question[] }>(
-      `/v1/admin/questions/topic/${topicId}`
+      `/v1/admin/topics/${topicId}/questions`
     );
   },
 
@@ -89,11 +89,24 @@ export const adminApi = {
 
   generateQuestions: async (
     topicId: string,
-    count: number
+    count: number,
+    options?: {
+      lessonId?: string;
+      difficulty?: string;
+      questionType?: string;
+      language?: string;
+    }
   ): Promise<{ questions: Question[] }> => {
     return apiClient.post<{ questions: Question[] }>(
-      "/v1/admin/generate-questions",
-      { topicId, count }
+      "/v1/ai/generate-questions",
+      {
+        lessonId: options?.lessonId,
+        topicId,
+        difficulty: options?.difficulty,
+        questionType: options?.questionType,
+        count,
+        language: options?.language,
+      }
     );
   },
 

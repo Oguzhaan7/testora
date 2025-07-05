@@ -426,4 +426,36 @@ export default async function adminRoutes(fastify: FastifyInstance) {
       }
     }
   );
+
+  fastify.post<{ Body: { topicId: string; count: number } }>(
+    "/generate-questions",
+    {
+      preHandler: [fastify.authenticate, userBasedLimiter],
+    },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      try {
+        const { topicId, count } = request.body as {
+          topicId: string;
+          count: number;
+        };
+
+        const result = await adminService.generateQuestions(topicId, count);
+
+        const response: ApiResponse = {
+          success: true,
+          data: result,
+          message: `${result.questions.length} questions generated successfully`,
+        };
+
+        reply.status(201).send(response);
+      } catch (error: any) {
+        const response: ApiResponse = {
+          success: false,
+          error: error.message,
+        };
+
+        reply.status(error.statusCode || 400).send(response);
+      }
+    }
+  );
 }

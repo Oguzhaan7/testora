@@ -42,11 +42,11 @@ export function LandingHeader() {
             <LanguageSwitcher />
             <div className="hidden sm:flex items-center space-x-2">
               <Button variant="ghost" asChild size="sm">
-                <Link href="/(auth)/login">Login</Link>
+                <Link href="/login">Login</Link>
               </Button>
             </div>
             <Button asChild size="sm">
-              <Link href="/(auth)/register">Get Started</Link>
+              <Link href="/register">Get Started</Link>
             </Button>
           </div>
         </div>

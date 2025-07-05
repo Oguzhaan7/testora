@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { Logo } from "@/components/ui/logo";
 
 export function LandingFooter() {
   const t = useTranslations("common");
@@ -13,13 +14,8 @@ export function LandingFooter() {
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-sm font-bold text-primary-foreground">
-                  T
-                </span>
-              </div>
-              <span className="text-xl font-bold">{t("appName")}</span>
+            <div className="mb-4">
+              <Logo size="md" />
             </div>
             <p className="text-muted-foreground text-sm max-w-md">
               {t("appDescription")}

@@ -93,7 +93,7 @@ export default function LessonDetailPage() {
           {isLoading ? (
             <div className="space-y-4">
               {Array.from({ length: 4 }).map((_, i) => (
-                <Card key={i} className="animate-pulse">
+                <Card key={`skeleton-${i}`} className="animate-pulse">
                   <CardHeader>
                     <div className="h-4 bg-muted rounded w-3/4"></div>
                     <div className="h-3 bg-muted rounded w-1/2"></div>
@@ -103,16 +103,16 @@ export default function LessonDetailPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              {topics?.topics?.map((topic, index) => (
+              {(topics?.topics || []).map((topic, index) => (
                 <Card
-                  key={topic.id}
+                  key={topic._id || topic.id || `topic-${index}`}
                   className="hover:shadow-md transition-shadow"
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
                         <CardTitle className="text-lg">
-                          {index + 1}. {topic.title}
+                          {index + 1}. {topic.name || topic.title}
                         </CardTitle>
                         <CardDescription className="mt-1">
                           {topic.description}
@@ -120,7 +120,7 @@ export default function LessonDetailPage() {
                       </div>
                       <Button asChild size="sm" variant="outline">
                         <Link
-                          href={`/study/session/start?lesson=${lessonId}&topic=${topic.id}`}
+                          href={`/study/session/start?lesson=${lessonId}&topic=${topic._id || topic.id}`}
                         >
                           <Play className="mr-2 h-3 w-3" />
                           {t("practice")}
@@ -129,7 +129,7 @@ export default function LessonDetailPage() {
                     </div>
                   </CardHeader>
                 </Card>
-              )) || []}
+              ))}
 
               {(!topics?.topics || topics.topics.length === 0) && (
                 <div className="text-center py-12">

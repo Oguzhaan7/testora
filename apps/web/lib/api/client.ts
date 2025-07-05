@@ -79,7 +79,7 @@ export const apiClient = {
   ): Promise<T> =>
     apiClient.request<T>(endpoint, {
       method: "POST",
-      body: JSON.stringify(data),
+      body: data ? JSON.stringify(data) : "{}",
       ...options,
     }),
 

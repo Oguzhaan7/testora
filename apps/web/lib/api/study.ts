@@ -3,6 +3,7 @@ import type { Lesson, Topic } from "@/types/lesson.types";
 import type {
   Question,
   StudySession,
+  StudySessionResponse,
   SessionSummary,
   UserProgress,
   StartStudySessionData,
@@ -30,13 +31,16 @@ export const studyApi = {
 
   startStudySession: async (
     data: StartStudySessionData
-  ): Promise<StudySession> => {
-    return apiClient.post<StudySession>("/v1/study/sessions/start", data);
+  ): Promise<StudySessionResponse> => {
+    return apiClient.post<StudySessionResponse>(
+      "/v1/study/sessions/start",
+      data
+    );
   },
 
   getCurrentSession: async (): Promise<{ session: StudySession | null }> => {
     return apiClient.get<{ session: StudySession | null }>(
-      "/v1/study/sessions/current"
+      "/v1/study/sessions/active"
     );
   },
 
@@ -52,7 +56,7 @@ export const studyApi = {
     data: SubmitAnswerData
   ): Promise<{ isCorrect: boolean; explanation: string }> => {
     return apiClient.post<{ isCorrect: boolean; explanation: string }>(
-      "/v1/study/answer",
+      "/v1/study/sessions/submit-answer",
       data
     );
   },
@@ -60,7 +64,8 @@ export const studyApi = {
     sessionId: string
   ): Promise<{ session: StudySession; summary: SessionSummary }> => {
     return apiClient.post<{ session: StudySession; summary: SessionSummary }>(
-      `/v1/study/sessions/${sessionId}/end`
+      `/v1/study/sessions/${sessionId}/end`,
+      {}
     );
   },
 

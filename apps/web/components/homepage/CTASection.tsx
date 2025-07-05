@@ -25,7 +25,7 @@ export function CTASection() {
               variant="secondary"
               className="w-full sm:w-auto"
             >
-              <Link href="/(auth)/register">
+              <Link href="/register">
                 {t("getStarted")}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -36,7 +36,7 @@ export function CTASection() {
               variant="outline"
               className="w-full sm:w-auto border-primary-foreground/20 text-primary hover:bg-primary-foreground/10"
             >
-              <Link href="/(auth)/register">{t("freeAccount")}</Link>
+              <Link href="/register">{t("freeAccount")}</Link>
             </Button>
           </div>
         </div>

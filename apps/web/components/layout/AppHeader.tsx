@@ -31,7 +31,7 @@ export function AppHeader({
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 py-1 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center">
         <Button
           variant="ghost"
@@ -42,7 +42,7 @@ export function AppHeader({
           <Menu className="h-5 w-5" />
         </Button>
 
-        <div className="flex flex-1 items-center justify-between space-x-4">
+        <div className="flex flex-1 items-center justify-between space-x-4 px-6">
           <div className="flex items-center space-x-2">
             {pageTitle && (
               <h1 className="text-lg font-semibold">{pageTitle}</h1>
@@ -50,7 +50,10 @@ export function AppHeader({
             {breadcrumbs && breadcrumbs.length > 0 && (
               <nav className="flex items-center space-x-1 text-sm text-muted-foreground">
                 {breadcrumbs.map((item, index) => (
-                  <span key={index} className="flex items-center">
+                  <span
+                    key={`breadcrumb-${index}-${item.label}`}
+                    className="flex items-center"
+                  >
                     {index > 0 && <span className="mx-1">/</span>}
                     {item.href ? (
                       <a href={item.href} className="hover:text-foreground">

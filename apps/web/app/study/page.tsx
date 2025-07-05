@@ -11,7 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { BookOpen, Clock, TrendingUp, Play } from "lucide-react";
+import { BookOpen, Clock, Play, Calendar, Target } from "lucide-react";
 import Link from "next/link";
 import { useLessons, useCurrentSession, useProgress } from "@/hooks/api";
 
@@ -23,13 +23,51 @@ export default function StudyPage() {
 
   const breadcrumbs = [{ label: t("title") }];
 
+  const statsData = [
+    {
+      key: "totalLessons",
+      value: lessonsLoading
+        ? "..."
+        : (lessons?.lessons?.length || 0).toString(),
+      icon: BookOpen,
+      subtitle: t("availableNow"),
+    },
+    {
+      key: "studyTime",
+      value: `${Math.round((progress?.progress?.totalTimeSpent || 0) / 60)}m`,
+      icon: Clock,
+      subtitle: t("thisWeek"),
+    },
+    {
+      key: "accuracy",
+      value: `${Math.round((progress?.progress?.overallAccuracy || 0) * 100)}%`,
+      icon: Target,
+      subtitle: t("overall"),
+    },
+  ];
+
+  const quickActions = [
+    {
+      key: "browseLessons",
+      href: "/study/lessons",
+      icon: BookOpen,
+      color: "bg-blue-500",
+    },
+    {
+      key: "createStudyPlan",
+      href: "/study-plans/create",
+      icon: Calendar,
+      color: "bg-purple-500",
+    },
+  ];
+
   return (
     <AppLayout
       sidebarItems={appMenuItems}
       pageTitle={t("title")}
       breadcrumbs={breadcrumbs}
     >
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">
@@ -59,8 +97,7 @@ export default function StudyPage() {
                 <div className="space-y-1">
                   <p className="font-medium">
                     {t("progress")}:{" "}
-                    {currentSession.session.currentQuestionIndex + 1}/
-                    {currentSession.session.totalQuestions}
+                    {(currentSession.session.questionsAttempted || 0) + 1}/{10}
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {t("correctAnswers")}:{" "}
@@ -68,7 +105,9 @@ export default function StudyPage() {
                   </p>
                 </div>
                 <Button asChild>
-                  <Link href={`/study/session/${currentSession.session.id}`}>
+                  <Link
+                    href={`/study/session/${currentSession.session._id || currentSession.session.id}`}
+                  >
                     {t("continue")}
                   </Link>
                 </Button>
@@ -77,53 +116,26 @@ export default function StudyPage() {
           </Card>
         )}
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                {t("totalLessons")}
-              </CardTitle>
-              <BookOpen className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">
-                {lessonsLoading ? "..." : lessons?.lessons?.length || 0}
-              </div>
-              <p className="text-xs text-muted-foreground">
-                {t("availableNow")}
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                {t("studyTime")}
-              </CardTitle>
-              <Clock className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">
-                {Math.round((progress?.progress?.totalTimeSpent || 0) / 60)}m
-              </div>
-              <p className="text-xs text-muted-foreground">{t("thisWeek")}</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                {t("accuracy")}
-              </CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">
-                {Math.round((progress?.progress?.overallAccuracy || 0) * 100)}%
-              </div>
-              <p className="text-xs text-muted-foreground">{t("overall")}</p>
-            </CardContent>
-          </Card>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {statsData.map((stat) => {
+            const Icon = stat.icon;
+            return (
+              <Card key={stat.key}>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    {t(stat.key)}
+                  </CardTitle>
+                  <Icon className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">{stat.value}</div>
+                  <p className="text-xs text-muted-foreground">
+                    {stat.subtitle}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
@@ -132,16 +144,27 @@ export default function StudyPage() {
               <CardTitle>{t("quickStart")}</CardTitle>
               <CardDescription>{t("quickStartDescription")}</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <Button className="w-full" asChild>
-                <Link href="/study/lessons">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  {t("browseLessons")}
-                </Link>
-              </Button>
-              <Button variant="outline" className="w-full" asChild>
-                <Link href="/plans/create">{t("createStudyPlan")}</Link>
-              </Button>
+            <CardContent>
+              <div className="grid gap-3">
+                {quickActions.map((action) => {
+                  const Icon = action.icon;
+                  return (
+                    <Button
+                      key={action.key}
+                      variant="outline"
+                      className="justify-start h-12"
+                      asChild
+                    >
+                      <Link href={action.href}>
+                        <div className={`p-2 rounded-md ${action.color} mr-3`}>
+                          <Icon className="h-4 w-4 text-white" />
+                        </div>
+                        {t(action.key)}
+                      </Link>
+                    </Button>
+                  );
+                })}
+              </div>
             </CardContent>
           </Card>
 
@@ -154,17 +177,24 @@ export default function StudyPage() {
             </CardHeader>
             <CardContent>
               {progress?.progress?.lastStudyDate ? (
-                <div className="space-y-2">
-                  <p className="text-sm">
-                    {t("lastStudied")}:{" "}
-                    {new Date(
-                      progress.progress.lastStudyDate
-                    ).toLocaleDateString()}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {t("currentStreak")}: {progress.progress.currentStreak}{" "}
-                    {t("days")}
-                  </p>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="p-2 bg-blue-100 rounded-md">
+                      <BookOpen className="h-4 w-4 text-blue-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium">
+                        {t("lastStudied")}:{" "}
+                        {new Date(
+                          progress.progress.lastStudyDate
+                        ).toLocaleDateString()}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {t("currentStreak")}: {progress.progress.currentStreak}{" "}
+                        {t("days")}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <p className="text-sm text-muted-foreground">

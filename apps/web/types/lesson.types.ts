@@ -1,6 +1,8 @@
 export interface Lesson {
-  id: string;
-  title: string;
+  _id: string;
+  id?: string;
+  name: string;
+  title?: string;
   description: string;
   level: string;
   category: string;
@@ -8,16 +10,22 @@ export interface Lesson {
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
+  __v?: number;
 }
 
 export interface Topic {
-  id: string;
+  _id: string;
+  id?: string;
   lessonId: string;
-  title: string;
+  name: string;
+  title?: string;
   description: string;
-  content: string;
-  order: number;
+  content?: string;
+  difficulty: number;
+  prerequisites: string[];
+  estimatedTime: number;
+  order?: number;
   isActive: boolean;
   createdAt: string;
-  updatedAt: string;
+  updatedAt?: string;
 }

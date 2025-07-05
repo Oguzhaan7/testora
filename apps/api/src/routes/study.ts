@@ -173,15 +173,12 @@ export default async function studyRoutes(fastify: FastifyInstance) {
         const userId = request.userId;
         const { sessionId } = request.params;
 
-        const sessionStats = await studyService.endStudySession(
-          userId,
-          sessionId
-        );
+        const result = await studyService.endSession(userId, sessionId);
 
         const response: ApiResponse = {
           success: true,
-          data: sessionStats,
-          message: "Study session ended successfully",
+          data: result,
+          message: "Session ended successfully",
         };
 
         reply.send(response);
@@ -192,6 +189,39 @@ export default async function studyRoutes(fastify: FastifyInstance) {
         };
 
         reply.status(error.statusCode || 400).send(response);
+      }
+    }
+  );
+
+  fastify.get<{ Params: { sessionId: string } }>(
+    "/sessions/:sessionId/question",
+    {
+      preHandler: fastify.authenticate,
+    },
+    async (request, reply) => {
+      try {
+        const userId = request.userId;
+        const { sessionId } = request.params;
+
+        const question = await studyService.getSessionQuestion(
+          userId,
+          sessionId
+        );
+
+        const response: ApiResponse = {
+          success: true,
+          data: { question },
+          message: "Question retrieved successfully",
+        };
+
+        reply.send(response);
+      } catch (error: any) {
+        const response: ApiResponse = {
+          success: false,
+          error: error.message,
+        };
+
+        reply.status(error.statusCode || 500).send(response);
       }
     }
   );

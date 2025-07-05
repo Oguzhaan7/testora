@@ -6,16 +6,16 @@ import type {
 
 export const userApi = {
   getProfile: async (): Promise<UserProfileResponse> => {
-    return apiClient.get("/users/profile");
+    return apiClient.get("/v1/users/profile");
   },
 
   updateProfile: async (
     data: UpdateProfileRequest
   ): Promise<UserProfileResponse> => {
-    return apiClient.put("/users/profile", data);
+    return apiClient.put("/v1/users/profile", data);
   },
 
   deleteAccount: async (): Promise<{ success: boolean }> => {
-    return apiClient.delete("/users/profile");
+    return apiClient.delete("/v1/users/profile");
   },
 };

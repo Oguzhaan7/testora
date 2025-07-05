@@ -147,9 +147,7 @@ export function PricingSection() {
                       }`}
                       variant={plan.buttonVariant}
                     >
-                      <Link href="/(auth)/register">
-                        {t(`${plan.key}.cta`)}
-                      </Link>
+                      <Link href="/register">{t(`${plan.key}.cta`)}</Link>
                     </Button>
                   </div>
                 </CardContent>

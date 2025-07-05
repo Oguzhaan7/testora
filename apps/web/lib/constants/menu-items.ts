@@ -8,6 +8,9 @@ import {
   Users,
   HelpCircle,
   BarChart,
+  Brain,
+  List,
+  Sparkles,
 } from "lucide-react";
 import type { SidebarItem } from "@/types/layout.types";
 
@@ -21,16 +24,50 @@ export const appMenuItems: SidebarItem[] = [
     icon: BookOpen,
     label: "Study",
     href: "/study",
+    children: [
+      {
+        icon: List,
+        label: "Lessons",
+        href: "/study/lessons",
+      },
+      {
+        icon: TrendingUp,
+        label: "My Progress",
+        href: "/study/progress",
+      },
+    ],
+  },
+  {
+    icon: Brain,
+    label: "AI Question Creator",
+    href: "/ai-questions",
+    children: [
+      {
+        icon: List,
+        label: "Manage Lessons",
+        href: "/ai-questions/lessons",
+      },
+      {
+        icon: List,
+        label: "Manage Topics",
+        href: "/ai-questions/topics",
+      },
+      {
+        icon: Sparkles,
+        label: "Generate Questions",
+        href: "/ai-questions/generate",
+      },
+    ],
   },
   {
     icon: Calendar,
-    label: "Plans",
+    label: "Study Plans",
     href: "/plans",
   },
   {
     icon: TrendingUp,
-    label: "Progress",
-    href: "/progress",
+    label: "Analytics",
+    href: "/analytics",
   },
   {
     icon: User,
@@ -47,23 +84,52 @@ export const appMenuItems: SidebarItem[] = [
 export const adminMenuItems: SidebarItem[] = [
   {
     icon: LayoutDashboard,
-    label: "Dashboard",
+    label: "Admin Dashboard",
     href: "/admin",
   },
   {
     icon: Users,
-    label: "Users",
+    label: "User Management",
     href: "/admin/users",
   },
   {
     icon: BookOpen,
-    label: "Lessons",
-    href: "/admin/lessons",
+    label: "Content Management",
+    href: "/admin/content",
+    children: [
+      {
+        icon: List,
+        label: "Lessons",
+        href: "/admin/lessons",
+      },
+      {
+        icon: List,
+        label: "Topics",
+        href: "/admin/topics",
+      },
+      {
+        icon: HelpCircle,
+        label: "Questions",
+        href: "/admin/questions",
+      },
+    ],
   },
   {
-    icon: HelpCircle,
-    label: "Questions",
-    href: "/admin/questions",
+    icon: Brain,
+    label: "AI Tools",
+    href: "/admin/ai",
+    children: [
+      {
+        icon: Sparkles,
+        label: "Generate Content",
+        href: "/admin/ai/generate",
+      },
+      {
+        icon: BarChart,
+        label: "AI Analytics",
+        href: "/admin/ai/analytics",
+      },
+    ],
   },
   {
     icon: BarChart,
@@ -72,7 +138,7 @@ export const adminMenuItems: SidebarItem[] = [
   },
   {
     icon: Settings,
-    label: "Settings",
+    label: "System Settings",
     href: "/admin/settings",
   },
 ];
