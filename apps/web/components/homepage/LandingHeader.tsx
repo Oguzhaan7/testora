@@ -18,14 +18,14 @@ export function LandingHeader() {
   const actionsRef = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (sectionId: string) => {
-    gsap.to(window, {
-      duration: 1.5,
-      scrollTo: {
-        y: sectionId,
-        offsetY: 80
-      },
-      ease: "power3.inOut"
-    });
+    const element = document.querySelector(sectionId);
+    if (element) {
+      const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
     setIsMobileMenuOpen(false);
   };
 

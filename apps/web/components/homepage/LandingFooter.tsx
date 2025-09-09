@@ -22,22 +22,21 @@ export function LandingFooter() {
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
-    gsap.to(window, {
-      duration: 1.5,
-      scrollTo: { y: 0 },
-      ease: "power3.inOut",
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
   };
 
   const scrollToSection = (sectionId: string) => {
-    gsap.to(window, {
-      duration: 1.5,
-      scrollTo: {
-        y: sectionId,
-        offsetY: 80,
-      },
-      ease: "power3.inOut",
-    });
+    const element = document.querySelector(sectionId);
+    if (element) {
+      const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
   };
 
   useGSAP(() => {
@@ -203,10 +202,10 @@ export function LandingFooter() {
             <h3 className="font-bold text-foreground mb-6 text-lg">Support</h3>
             <ul className="space-y-4">
               {[
-                { href: "#", label: "Help Center" },
-                { href: "#", label: "Contact Us" },
-                { href: "#", label: "Privacy Policy" },
-                { href: "#", label: "Terms of Service" },
+                { href: "help", label: "Help Center" },
+                { href: "contact", label: "Contact Us" },
+                { href: "privacy", label: "Privacy Policy" },
+                { href: "terms", label: "Terms of Service" },
               ].map((item) => (
                 <li key={item.href}>
                   <span className="text-muted-foreground cursor-default flex items-center group">
@@ -229,18 +228,12 @@ export function LandingFooter() {
 
             <div className="flex items-center space-x-6">
               <div className="flex space-x-4">
-                <Link
-                  href="#"
-                  className="text-muted-foreground cursor-default text-sm"
-                >
+                <span className="text-muted-foreground cursor-default text-sm">
                   Privacy
-                </Link>
-                <Link
-                  href="#"
-                  className="text-muted-foreground cursor-default text-sm"
-                >
+                </span>
+                <span className="text-muted-foreground cursor-default text-sm">
                   Terms
-                </Link>
+                </span>
               </div>
             </div>
           </div>
