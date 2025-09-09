@@ -461,6 +461,16 @@
         "text": "Şimdiye kadar kullandığım en iyi öğrenme platformu. İlerleme takibi özelliği hedeflerimin üstünde kalmama yardımcı oluyor.",
         "author": "Zeynep Kaya",
         "role": "Tıp Öğrencisi"
+      },
+      "testimonial4": {
+        "text": "Adaptif öğrenme sistemi sayesinde zayıf olduğum konularda daha çok çalıştım. Gerçekten kişisel öğretmenim gibi!",
+        "author": "Can Özkan",
+        "role": "Lise Öğrencisi"
+      },
+      "testimonial5": {
+        "text": "Testora ile günlük çalışma rutinrim oluştu. Motivasyonum her gün artıyor ve hedeflerime odaklanabiliyorum.",
+        "author": "Selin Arslan",
+        "role": "Üniversite Öğrencisi"
       }
     },
     "cta": {

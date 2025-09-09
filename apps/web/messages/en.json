@@ -447,6 +447,16 @@
         "text": "Best learning platform I've ever used. The progress tracking feature helps me stay on top of my goals.",
         "author": "Maria Rodriguez",
         "role": "Medical Student"
+      },
+      "testimonial4": {
+        "text": "The adaptive learning system helped me focus on my weak areas. It's like having a personal tutor!",
+        "author": "David Chen",
+        "role": "High School Student"
+      },
+      "testimonial5": {
+        "text": "Testora helped me build a consistent study routine. My motivation increases every day and I can focus on my goals.",
+        "author": "Emma Johnson",
+        "role": "University Student"
       }
     },
     "cta": {

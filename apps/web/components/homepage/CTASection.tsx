@@ -34,7 +34,7 @@ export function CTASection() {
               asChild
               size="lg"
               variant="outline"
-              className="w-full sm:w-auto border-primary-foreground/20 text-primary hover:bg-primary-foreground/10"
+              className="w-full sm:w-auto  text-white "
             >
               <Link href="/register">{t("freeAccount")}</Link>
             </Button>
